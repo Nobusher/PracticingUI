@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Database/Database.csproj" />
+  <Project Path="PracticingUI/PracticingUI.csproj" />
+  <Project Path="Tests/Tests.csproj" />
+</Solution>
