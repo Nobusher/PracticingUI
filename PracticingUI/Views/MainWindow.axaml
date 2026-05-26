@@ -15,6 +15,30 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <DockPanel>
+		<Grid DockPanel.Dock="Top" ColumnDefinitions="100, 150, 150, 100, 100, *">
+			<TextBlock Grid.Column="0" Text="Flight" FontWeight="Bold" Margin="5"/>
+            <TextBlock Grid.Column="1" Text="From" FontWeight="Bold" Margin="5"/>
+            <TextBlock Grid.Column="2" Text="To" FontWeight="Bold" Margin="5"/>
+            <TextBlock Grid.Column="3" Text="Departure" FontWeight="Bold" Margin="5"/>
+            <TextBlock Grid.Column="4" Text="Arrival" FontWeight="Bold" Margin="5"/>
+            <TextBlock Grid.Column="5" Text="Status" FontWeight="Bold" Margin="5"/>
+        </Grid>
+
+        <ItemsControl ItemsSource="{Binding Flights}">
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<Grid ColumnDefinitions="100, 150, 150, 100, 100, *">
+						<TextBlock Grid.Column="0" Text="{Binding FlightNumber}" Margin="5"/>
+                        <TextBlock Grid.Column="1" Text="{Binding From}" Margin="5"/>
+                        <TextBlock Grid.Column="2" Text="{Binding To}" Margin="5"/>
+                        <TextBlock Grid.Column="3" Text="{Binding DepartureTime, StringFormat='{}{}0:HH:mm'}" Margin="5"/>
+                        <TextBlock Grid.Column="4" Text="{Binding ArrivalTime, StringFormat='{}{}0:HH:mm'}" Margin="5"/>
+                        <TextBlock Grid.Column="5" Text="{Binding Status}" Margin="5"/>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </DockPanel>
 
 </Window>
