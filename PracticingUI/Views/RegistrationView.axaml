@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="using:PracticingUI.ViewModels"
+             x:DataType="viewmodels:RegistrationViewModel"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PracticingUI.RegistrationView">
+ <Grid>
+	 <StackPanel Margin="20" Spacing="10" MaxWidth="400">
+		 <TextBlock Text="Passanger" FontSize="18" FontWeight="Bold"/>
+         <TextBlock Text="Flight"/>
+
+         <ComboBox ItemsSource="{Binding Flights}"
+                   SelectedItem="{Binding SelectedFlight}"
+                   HorizontalAlignment="Stretch"
+                   >
+			 <ComboBox.ItemTemplate>
+				 <DataTemplate>
+					 <TextBlock Text="{Binding FlightNumber}"/>
+                 </DataTemplate>
+             </ComboBox.ItemTemplate>
+         </ComboBox>
+
+         <TextBlock Text="Passanger name"/>
+         <TextBox Text="{Binding FullName}"/>
+
+         <TextBlock Text="Passport number"/>
+         <TextBox Text="{Binding PassportNumber}"/>
+
+         <TextBlock Text="Seat"/>
+         <TextBox Text="{Binding Seat}"/>
+
+         <TextBlock Text="Price"/>
+         <TextBox Text="{Binding Price}"/>
+
+         <Button Content="Register"
+                 Command="{Binding RegisterCommand}"
+                 HorizontalAlignment="Stretch"
+                 HorizontalContentAlignment="Center"/>
+     </StackPanel>
+ </Grid>
+</UserControl>

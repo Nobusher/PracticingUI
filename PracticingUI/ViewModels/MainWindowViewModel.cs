@@ -9,13 +9,15 @@ namespace PracticingUI.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public string Greeting { get; } = "Welcome to Avalonia!";
+        
         private readonly AppDbContext _db;
-
+        public RegistrationViewModel Registration { get; }
         public ObservableCollection<FlightRow> Flights { get; } = [];
-        public MainWindowViewModel(AppDbContext db)
+        public MainWindowViewModel(AppDbContext db, 
+            RegistrationViewModel registration)
         {
             _db = db;
+            Registration = registration;
             LoadFlights();
         }
 

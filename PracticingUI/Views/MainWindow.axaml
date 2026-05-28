@@ -6,6 +6,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="PracticingUI.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
+        xmlns:views="using:PracticingUI"
         Icon="/Assets/avalonia-logo.ico"
         Title="PracticingUI">
 
@@ -13,9 +14,12 @@
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
+        
     </Design.DataContext>
 
-    <DockPanel>
+    <TabControl>
+		<TabItem Header="Flights">
+			<DockPanel>
 		<Grid DockPanel.Dock="Top" ColumnDefinitions="100, 150, 150, 100, 100, *">
 			<TextBlock Grid.Column="0" Text="Flight" FontWeight="Bold" Margin="5"/>
             <TextBlock Grid.Column="1" Text="From" FontWeight="Bold" Margin="5"/>
@@ -32,13 +36,18 @@
 						<TextBlock Grid.Column="0" Text="{Binding FlightNumber}" Margin="5"/>
                         <TextBlock Grid.Column="1" Text="{Binding From}" Margin="5"/>
                         <TextBlock Grid.Column="2" Text="{Binding To}" Margin="5"/>
-                        <TextBlock Grid.Column="3" Text="{Binding DepartureTime, StringFormat='{}{}0:HH:mm'}" Margin="5"/>
-                        <TextBlock Grid.Column="4" Text="{Binding ArrivalTime, StringFormat='{}{}0:HH:mm'}" Margin="5"/>
+                        <TextBlock Grid.Column="3" Text="{Binding DepartureTime, StringFormat=\{0:HH:mm\}}" Margin="5"/>
+                        <TextBlock Grid.Column="4" Text="{Binding ArrivalTime, StringFormat=\{0:HH:mm\}}" Margin="5"/>
                         <TextBlock Grid.Column="5" Text="{Binding Status}" Margin="5"/>
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
     </DockPanel>
+        </TabItem>
+        <TabItem Header="Registration">
+			<views:RegistrationView DataContext="{Binding Registration}"/>
+        </TabItem>
+    </TabControl>
 
 </Window>

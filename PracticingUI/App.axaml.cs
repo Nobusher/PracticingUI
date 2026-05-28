@@ -33,6 +33,8 @@ namespace PracticingUI
 
             services.AddSingleton<MainWindowViewModel>();
 
+            services.AddTransient<RegistrationViewModel>();
+
             Services = services.BuildServiceProvider();
 
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
